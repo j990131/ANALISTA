@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dental Pro — Fin de Semana</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      background: #0d1b2a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 16px;
+      font-family: -apple-system, "Segoe UI", sans-serif;
+    }
+
+    /* ── Phone shell ── */
+    .phone {
+      position: relative;
+      width: 390px;
+      min-height: 844px;
+      background: #f0f8ff;
+      border-radius: 52px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.55), inset 0 0 0 1px rgba(255,255,255,0.08);
+    }
+
+    /* ── Static background ── */
+    .bg {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    .bg-arch {
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 340px;
+      height: 330px;
+      background: linear-gradient(155deg, #8ecae6 0%, #c9e8f7 50%, #e4f4ff 100%);
+      border-radius: 0 0 170px 170px;
+    }
+    .bg-dots {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, #9ecfe8 1px, transparent 1px);
+      background-size: 26px 26px;
+      opacity: 0.3;
+    }
+
+    /* ── Header ── */
+    .header {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding-top: 54px;
+    }
+    .header-star { font-size: 18px; color: #fff; display: block; margin-bottom: 6px; }
+    .header-sub {
+      font-size: 13px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #5a8fa8;
+      font-weight: 400;
+    }
+    .header-title {
+      font-size: 44px;
+      font-weight: 800;
+      font-style: italic;
+      color: #1a4f6e;
+      line-height: 1.05;
+      letter-spacing: -1.5px;
+    }
+
+    /* ── Carousel ── */
+    .stage {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 330px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .track {
+      position: relative;
+      width: 195px;
+      height: 270px;
+    }
+    .card {
+      position: absolute;
+      top: 0; left: 0;
+      width: 190px;
+      height: 260px;
+      border-radius: 28px;
+      cursor: pointer;
+      transform-origin: center center;
+      will-change: transform;
+      transition: transform 0.42s cubic-bezier(0.34,1.56,0.64,1),
+                  opacity  0.42s ease,
+                  filter   0.42s ease;
+    }
+    .card-inner {
+      width: 100%; height: 100%;
+      border-radius: 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      border: 1.5px solid rgba(255,255,255,0.85);
+    }
+    .card-circle {
+      width: 118px; height: 118px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 62px;
+      filter: drop-shadow(0 4px 10px rgba(0,0,0,0.1));
+    }
+    .card-label {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      opacity: 0.65;
+    }
+
+    /* ── Nav arrows ── */
+    .nav {
+      position: absolute;
+      top: 50%; transform: translateY(-50%);
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(6px);
+      font-size: 26px;
+      line-height: 1;
+      color: #1a4f6e;
+      cursor: pointer;
+      z-index: 10;
+      box-shadow: 0 4px 18px rgba(0,80,160,0.14);
+      transition: transform 0.15s, box-shadow 0.15s;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .nav:hover { transform: translateY(-50%) scale(1.1); box-shadow: 0 6px 22px rgba(0,80,160,0.22); }
+    .nav-l { left: 12px; }
+    .nav-r { right: 12px; }
+
+    /* ── Product info ── */
+    .info {
+      position: relative; z-index: 2;
+      text-align: center;
+      padding: 0 36px;
+      margin-top: 10px;
+    }
+    .product-name {
+      font-size: 30px;
+      font-weight: 700;
+      margin-bottom: 5px;
+      transition: color 0.3s;
+    }
+    .product-desc {
+      font-size: 13px;
+      color: #6a8fa8;
+      letter-spacing: 0.2px;
+    }
+
+    /* ── Dots ── */
+    .dots {
+      display: flex; gap: 8px;
+      margin-top: 18px;
+      z-index: 2;
+    }
+    .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #c0d8e8;
+      border: none; cursor: pointer;
+      padding: 0;
+      transition: all 0.25s ease;
+    }
+    .dot.on { width: 22px; border-radius: 4px; }
+
+    /* ── Price strip ── */
+    .price-row {
+      position: relative; z-index: 2;
+      display: flex; align-items: center; gap: 10px;
+      margin-top: 30px; width: 84%;
+    }
+    .price-side { flex:1; display:flex; align-items:center; gap:8px; }
+    .line { flex:1; height:1px; background: linear-gradient(90deg,transparent,#aac8d8,transparent); }
+    .gem { font-size: 13px; color: #4a90d9; }
+    .pill {
+      background: #fff;
+      border: 1.5px solid #cde5f2;
+      border-radius: 40px;
+      padding: 13px 26px;
+      white-space: nowrap;
+      box-shadow: 0 4px 22px rgba(74,144,217,0.12);
+    }
+    .pill-price {
+      font-size: 18px;
+      font-weight: 800;
+      color: #1a4f6e;
+      letter-spacing: 0.5px;
+    }
+    .promo-label {
+      position: relative; z-index: 2;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.8px;
+      color: #4a90d9;
+      margin-top: 8px;
+      margin-bottom: 36px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="phone">
+  <!-- Background -->
+  <div class="bg">
+    <div class="bg-arch"></div>
+    <div class="bg-dots"></div>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <span class="header-star">✦</span>
+    <p class="header-sub">Solo Este</p>
+    <h1 class="header-title">Fin de Semana</h1>
+  </header>
+
+  <!-- Carousel -->
+  <div class="stage">
+    <div class="track" id="track"></div>
+    <button class="nav nav-l" onclick="move(-1)">‹</button>
+    <button class="nav nav-r" onclick="move(1)">›</button>
+  </div>
+
+  <!-- Info -->
+  <div class="info">
+    <h2 class="product-name" id="pname"></h2>
+    <p class="product-desc" id="pdesc"></p>
+  </div>
+
+  <!-- Dots -->
+  <div class="dots" id="dots"></div>
+
+  <!-- Price -->
+  <div class="price-row">
+    <div class="price-side"><span class="gem">♦</span><div class="line"></div></div>
+    <div class="pill"><span class="pill-price" id="pprice"></span></div>
+    <div class="price-side"><div class="line"></div><span class="gem">♦</span></div>
+  </div>
+  <p class="promo-label">COMPRA 1 LLEVA 2</p>
+</div>
+
+<script>
+  const products = [
+    { name:"Kit Blanqueador",  desc:"Blanqueamiento profesional en casa", price:"$24.00", emoji:"🦷", bg:"#E8F4FD", accent:"#4A90D9" },
+    { name:"Cepillo Sónico",   desc:"5 modos de limpieza intensa",        price:"$18.00", emoji:"🪥", bg:"#EAF9F1", accent:"#27AE60" },
+    { name:"Irrigador Oral",   desc:"Limpieza profunda interdental",       price:"$32.00", emoji:"💧", bg:"#EEEEFF", accent:"#6C63FF" },
+    { name:"Protector Bucal",  desc:"Protección nocturna premium",         price:"$15.00", emoji:"😁", bg:"#FFF5E4", accent:"#F5A623" },
+  ];
+
+  let active = 0;
+
+  function build() {
+    const track = document.getElementById("track");
+    track.innerHTML = "";
+    products.forEach((p, i) => {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.id = "card-" + i;
+      card.innerHTML = `
+        <div class="card-inner" style="background:${p.bg}">
+          <div class="card-circle" style="background:${p.accent}22">${p.emoji}</div>
+          <span class="card-label" style="color:${p.accent}">DENTAL PRO</span>
+        </div>`;
+      card.onclick = () => setActive(i);
+      track.appendChild(card);
+    });
+
+    const dotsEl = document.getElementById("dots");
+    dotsEl.innerHTML = "";
+    products.forEach((_, i) => {
+      const d = document.createElement("button");
+      d.className = "dot";
+      d.id = "dot-" + i;
+      d.onclick = () => setActive(i);
+      dotsEl.appendChild(d);
+    });
+  }
+
+  function setActive(idx) {
+    active = (idx + products.length) % products.length;
+    render();
+  }
+
+  function move(dir) { setActive(active + dir); }
+
+  function render() {
+    const p = products[active];
+
+    // cards
+    products.forEach((_, i) => {
+      const offset = i - active;
+      const abs    = Math.abs(offset);
+      const tx     = offset * 100;
+      const ty     = offset * 40;
+      const rot    = offset * 8;
+      const scale  = abs === 0 ? 1 : abs === 1 ? 0.82 : 0.65;
+      const z      = products.length - abs;
+      const op     = abs > 2 ? 0 : 1 - abs * 0.15;
+      const shadow = abs === 0
+        ? "drop-shadow(0 20px 40px rgba(0,80,160,0.28))"
+        : "drop-shadow(0 10px 24px rgba(0,80,160,0.14))";
+
+      const el = document.getElementById("card-" + i);
+      el.style.transform = `translateX(${tx}px) translateY(${ty}px) rotate(${rot}deg) scale(${scale})`;
+      el.style.zIndex  = z;
+      el.style.opacity = op;
+      el.style.filter  = shadow;
+    });
+
+    // info
+    document.getElementById("pname").textContent  = p.name;
+    document.getElementById("pname").style.color  = p.accent;
+    document.getElementById("pdesc").textContent  = p.desc;
+    document.getElementById("pprice").textContent = p.price + " C/U";
+
+    // dots
+    products.forEach((_, i) => {
+      const d = document.getElementById("dot-" + i);
+      d.classList.toggle("on", i === active);
+      d.style.background = i === active ? p.accent : "";
+    });
+  }
+
+  // Swipe support
+  let startX = 0;
+  document.querySelector(".stage").addEventListener("touchstart", e => startX = e.touches[0].clientX);
+  document.querySelector(".stage").addEventListener("touchend",   e => {
+    const dx = e.changedTouches[0].clientX - startX;
+    if (Math.abs(dx) > 40) move(dx < 0 ? 1 : -1);
+  });
+
+  // Keyboard support
+  document.addEventListener("keydown", e => {
+    if (e.key === "ArrowRight") move(1);
+    if (e.key === "ArrowLeft")  move(-1);
+  });
+
+  build();
+  render();
+</script>
+</body>
+</html>
