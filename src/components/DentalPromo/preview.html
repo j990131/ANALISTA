@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dental Pro — Fin de Semana</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100vh;
+      background: #0d1b2a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 16px;
+    }
+
+    /* ─── Page Container ─────────────────────────────────────────── */
+    .promo-page {
+      position: relative;
+      width: 390px;
+      min-height: 844px;
+      margin: 0 auto;
+      background: #f0f8ff;
+      border-radius: 48px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: -apple-system, "SF Pro Display", "Segoe UI", sans-serif;
+      box-shadow: 0 32px 80px rgba(0, 0, 0, 0.5);
+    }
+
+    /* ─── Static Background ──────────────────────────────────────── */
+    .promo-bg {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .bg-arch {
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 340px;
+      height: 320px;
+      background: linear-gradient(160deg, #a8d8ea 0%, #d4efff 55%, #e8f7ff 100%);
+      border-radius: 0 0 180px 180px;
+    }
+    .bg-dots {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, #b0d8f0 1px, transparent 1px);
+      background-size: 28px 28px;
+      opacity: 0.35;
+    }
+
+    /* ─── Header ─────────────────────────────────────────────────── */
+    .promo-header {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding-top: 52px;
+      margin-bottom: 4px;
+    }
+    .header-star {
+      display: block;
+      font-size: 18px;
+      color: #fff;
+      margin-bottom: 6px;
+      text-shadow: 0 1px 4px rgba(0,120,200,0.4);
+    }
+    .header-only {
+      font-size: 15px;
+      font-weight: 400;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #5a8fa8;
+      margin: 0 0 2px;
+    }
+    .header-title {
+      font-size: 42px;
+      font-weight: 700;
+      font-style: italic;
+      color: #1a4f6e;
+      margin: 0;
+      line-height: 1.1;
+      letter-spacing: -1px;
+    }
+
+    /* ─── Carousel Stage ─────────────────────────────────────────── */
+    .carousel-stage {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 340px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 16px;
+    }
+    .carousel-track {
+      position: relative;
+      width: 200px;
+      height: 280px;
+    }
+
+    /* ─── Product Card ───────────────────────────────────────────── */
+    .product-card {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 190px;
+      height: 260px;
+      border-radius: 28px;
+      cursor: pointer;
+      transform-origin: center center;
+      will-change: transform;
+      filter: drop-shadow(0 12px 28px rgba(0,80,160,0.18));
+    }
+    .product-card.active {
+      filter: drop-shadow(0 20px 40px rgba(0,80,160,0.28));
+    }
+    .card-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      border: 1.5px solid rgba(255,255,255,0.9);
+    }
+    .card-icon-bg {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card-emoji {
+      font-size: 64px;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.12));
+      line-height: 1;
+    }
+    .card-badge {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      opacity: 0.7;
+    }
+
+    /* ─── Nav Buttons ────────────────────────────────────────────── */
+    .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(8px);
+      font-size: 24px;
+      color: #1a4f6e;
+      cursor: pointer;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      box-shadow: 0 4px 16px rgba(0,80,160,0.15);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .nav-btn:hover {
+      transform: translateY(-50%) scale(1.08);
+      box-shadow: 0 6px 20px rgba(0,80,160,0.22);
+    }
+    .nav-prev { left: 12px; }
+    .nav-next { right: 12px; }
+
+    /* ─── Product Info ───────────────────────────────────────────── */
+    .product-info {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      margin-top: 12px;
+      padding: 0 32px;
+    }
+    .product-name {
+      font-size: 30px;
+      font-weight: 700;
+      margin: 0 0 6px;
+      transition: color 0.3s ease;
+    }
+    .product-desc {
+      font-size: 13px;
+      color: #6a8fa8;
+      margin: 0;
+      letter-spacing: 0.3px;
+    }
+
+    /* ─── Dot Indicators ─────────────────────────────────────────── */
+    .dots {
+      display: flex;
+      gap: 8px;
+      margin-top: 16px;
+      z-index: 2;
+    }
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #c8dde9;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: all 0.25s ease;
+    }
+    .dot-active {
+      width: 22px;
+      border-radius: 4px;
+    }
+
+    /* ─── Price Section ──────────────────────────────────────────── */
+    .price-section {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 28px;
+      width: 85%;
+    }
+    .price-divider {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .divider-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #b0cfe0, transparent);
+    }
+    .diamond {
+      font-size: 14px;
+      color: #4a90d9;
+    }
+    .price-pill {
+      background: #fff;
+      border: 1.5px solid #d4e9f4;
+      border-radius: 40px;
+      padding: 12px 28px;
+      white-space: nowrap;
+      box-shadow: 0 4px 20px rgba(74,144,217,0.12);
+    }
+    .price-amount {
+      font-size: 18px;
+      font-weight: 800;
+      color: #1a4f6e;
+      letter-spacing: 0.5px;
+    }
+
+    /* ─── Promo Tag ──────────────────────────────────────────────── */
+    .promo-tag {
+      position: relative;
+      z-index: 2;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      color: #4a90d9;
+      margin-top: 8px;
+      margin-bottom: 32px;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState } = React;
+
+    const products = [
+      {
+        id: 1,
+        name: "Kit Blanqueador",
+        description: "Blanqueamiento profesional en casa",
+        price: "$24.00",
+        emoji: "🦷",
+        color: "#E8F4FD",
+        accent: "#4A90D9",
+      },
+      {
+        id: 2,
+        name: "Cepillo Sónico",
+        description: "5 modos de limpieza intensa",
+        price: "$18.00",
+        emoji: "🪥",
+        color: "#EAF9F1",
+        accent: "#27AE60",
+      },
+      {
+        id: 3,
+        name: "Irrigador Oral",
+        description: "Limpieza profunda interdental",
+        price: "$32.00",
+        emoji: "💧",
+        color: "#EEF2FF",
+        accent: "#6C63FF",
+      },
+      {
+        id: 4,
+        name: "Protector Bucal",
+        description: "Protección nocturna premium",
+        price: "$15.00",
+        emoji: "😁",
+        color: "#FFF5E4",
+        accent: "#F5A623",
+      },
+    ];
+
+    function DentalPromoPage() {
+      const [activeIndex, setActiveIndex] = useState(0);
+
+      const getCardStyle = (index) => {
+        const offset = index - activeIndex;
+        const absOffset = Math.abs(offset);
+        const translateX = offset * 90 + offset * 10;
+        const translateY = offset * 40;
+        const rotate = offset * 8;
+        const scale = absOffset === 0 ? 1 : absOffset === 1 ? 0.82 : 0.65;
+        const zIndex = products.length - absOffset;
+        const opacity = absOffset > 2 ? 0 : 1 - absOffset * 0.15;
+
+        return {
+          transform: `translateX(${translateX}px) translateY(${translateY}px) rotate(${rotate}deg) scale(${scale})`,
+          zIndex,
+          opacity,
+          transition: "all 0.45s cubic-bezier(0.34, 1.56, 0.64, 1)",
+        };
+      };
+
+      const next = () => setActiveIndex((i) => (i + 1) % products.length);
+      const prev = () => setActiveIndex((i) => (i - 1 + products.length) % products.length);
+      const active = products[activeIndex];
+
+      return (
+        <div className="promo-page">
+          {/* Static background */}
+          <div className="promo-bg">
+            <div className="bg-arch" />
+            <div className="bg-dots" />
+          </div>
+
+          {/* Header */}
+          <header className="promo-header">
+            <span className="header-star">✦</span>
+            <p className="header-only">Solo Este</p>
+            <h1 className="header-title">Fin de Semana</h1>
+          </header>
+
+          {/* Diagonal Carousel */}
+          <div className="carousel-stage">
+            <div className="carousel-track">
+              {products.map((product, index) => (
+                <div
+                  key={product.id}
+                  className={`product-card ${index === activeIndex ? "active" : ""}`}
+                  style={getCardStyle(index)}
+                  onClick={() => setActiveIndex(index)}
+                >
+                  <div className="card-inner" style={{ background: product.color }}>
+                    <div className="card-icon-bg" style={{ background: product.accent + "22" }}>
+                      <span className="card-emoji">{product.emoji}</span>
+                    </div>
+                    <div className="card-badge" style={{ color: product.accent }}>
+                      DENTAL PRO
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <button className="nav-btn nav-prev" onClick={prev}>‹</button>
+            <button className="nav-btn nav-next" onClick={next}>›</button>
+          </div>
+
+          {/* Product Info */}
+          <div className="product-info">
+            <h2 className="product-name" style={{ color: active.accent }}>
+              {active.name}
+            </h2>
+            <p className="product-desc">{active.description}</p>
+          </div>
+
+          {/* Dots */}
+          <div className="dots">
+            {products.map((_, i) => (
+              <button
+                key={i}
+                className={`dot ${i === activeIndex ? "dot-active" : ""}`}
+                style={i === activeIndex ? { background: active.accent } : {}}
+                onClick={() => setActiveIndex(i)}
+              />
+            ))}
+          </div>
+
+          {/* Price */}
+          <div className="price-section">
+            <div className="price-divider">
+              <span className="diamond">♦</span>
+              <div className="divider-line" />
+            </div>
+            <div className="price-pill">
+              <span className="price-amount">{active.price} C/U</span>
+            </div>
+            <div className="price-divider">
+              <div className="divider-line" />
+              <span className="diamond">♦</span>
+            </div>
+          </div>
+
+          <p className="promo-tag">COMPRA 1 LLEVA 2</p>
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<DentalPromoPage />);
+  </script>
+</body>
+</html>
