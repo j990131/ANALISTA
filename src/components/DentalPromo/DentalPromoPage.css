@@ -175,6 +175,11 @@
   box-shadow: 0 6px 20px rgba(0, 80, 160, 0.22);
 }
 
+.nav-btn:focus-visible {
+  outline: 2px solid #1a4f6e;
+  outline-offset: 2px;
+}
+
 .nav-prev {
   left: 12px;
 }
@@ -228,6 +233,11 @@
 .dot-active {
   width: 22px;
   border-radius: 4px;
+}
+
+.dot:focus-visible {
+  outline: 2px solid #1a4f6e;
+  outline-offset: 2px;
 }
 
 /* ─── Price Section ──────────────────────────────────────────── */
