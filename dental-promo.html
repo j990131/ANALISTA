@@ -153,6 +153,7 @@
       display: flex; align-items: center; justify-content: center;
     }
     .nav:hover { transform: translateY(-50%) scale(1.1); box-shadow: 0 6px 22px rgba(0,80,160,0.22); }
+    .nav:focus-visible { outline: 2px solid #1a4f6e; outline-offset: 2px; }
     .nav-l { left: 12px; }
     .nav-r { right: 12px; }
 
@@ -189,6 +190,7 @@
       padding: 0;
       transition: all 0.25s ease;
     }
+    .dot:focus-visible { outline: 2px solid #1a4f6e; outline-offset: 2px; }
     .dot.on { width: 22px; border-radius: 4px; }
 
     /* ── Price strip ── */
@@ -244,8 +246,8 @@
   <!-- Carousel -->
   <div class="stage">
     <div class="track" id="track"></div>
-    <button class="nav nav-l" onclick="move(-1)">‹</button>
-    <button class="nav nav-r" onclick="move(1)">›</button>
+    <button class="nav nav-l" onclick="move(-1)" aria-label="Producto anterior">‹</button>
+    <button class="nav nav-r" onclick="move(1)" aria-label="Siguiente producto">›</button>
   </div>
 
   <!-- Info -->
@@ -255,7 +257,7 @@
   </div>
 
   <!-- Dots -->
-  <div class="dots" id="dots"></div>
+  <div class="dots" id="dots" role="tablist" aria-label="Indicadores de producto"></div>
 
   <!-- Price -->
   <div class="price-row">
@@ -298,6 +300,8 @@
       const d = document.createElement("button");
       d.className = "dot";
       d.id = "dot-" + i;
+      d.setAttribute("aria-label", `Seleccionar producto ${i + 1}`);
+      d.setAttribute("role", "tab");
       d.onclick = () => setActive(i);
       dotsEl.appendChild(d);
     });
@@ -343,8 +347,10 @@
     // dots
     products.forEach((_, i) => {
       const d = document.getElementById("dot-" + i);
-      d.classList.toggle("on", i === active);
-      d.style.background = i === active ? p.accent : "";
+      const isActive = i === active;
+      d.classList.toggle("on", isActive);
+      d.style.background = isActive ? p.accent : "";
+      d.setAttribute("aria-selected", isActive);
     });
   }
 
