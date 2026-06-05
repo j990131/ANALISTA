@@ -113,10 +113,10 @@ export default function DentalPromoPage() {
         </div>
 
         {/* Navigation arrows */}
-        <button className="nav-btn nav-prev" onClick={prev}>
+        <button className="nav-btn nav-prev" onClick={prev} aria-label="Producto anterior">
           ‹
         </button>
-        <button className="nav-btn nav-next" onClick={next}>
+        <button className="nav-btn nav-next" onClick={next} aria-label="Siguiente producto">
           ›
         </button>
       </div>
@@ -133,10 +133,13 @@ export default function DentalPromoPage() {
       </div>
 
       {/* Dot indicators */}
-      <div className="dots">
+      <div className="dots" role="tablist">
         {products.map((_, i) => (
           <button
             key={i}
+            role="tab"
+            aria-selected={i === activeIndex}
+            aria-label={`Ver ${products[i].name}`}
             className={`dot ${i === activeIndex ? "dot-active" : ""}`}
             style={i === activeIndex ? { background: active.accent } : {}}
             onClick={() => setActiveIndex(i)}
