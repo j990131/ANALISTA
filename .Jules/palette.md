@@ -1,0 +1,3 @@
+## 2026-06-07 - Adding Accessible Controls to Spanish Dental Promo Components
+**Learning:** The UI components in this app are in Spanish, so ARIA labels must be explicitly translated (e.g., 'Producto anterior', 'Producto siguiente') rather than using English defaults to ensure screen reader users hear localized context. Furthermore, dynamically mapped elements (like pagination dots) require dynamically interpolated labels (e.g., `Ver producto ${i + 1}`) along with `role='tab'` and `aria-selected` attributes for clarity.
+**Action:** Always verify the application's primary language context when adding ARIA labels, and explicitly map localized dynamic labels when rendering repetitive UI elements.
