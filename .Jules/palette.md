@@ -1,0 +1,3 @@
+## 2024-05-18 - [Add Explicit Spanish ARIA Labels for Micro-UI Components]
+**Learning:** Found that this particular UI pattern (DentalPromo components) required manual addition of Spanish ARIA labels because dynamic text labels were strictly visual. Icon-only buttons mapping correctly needed standard localized naming conventions like "Producto anterior".
+**Action:** Always ensure mapped dots specify explicit `aria-label`s dynamically (e.g., \`Ver producto ${i + 1}\`) and localized button labels match page content locale when dealing with Spanish-based projects to maintain semantic consistency.
