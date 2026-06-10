@@ -1,0 +1,3 @@
+## 2024-03-13 - [Dynamic Carousel Accessibility in Spanish UI]
+**Learning:** Adding accessibility to dynamic components in a Spanish-first UI requires explicitly translated `aria-label` attributes (e.g., "Producto anterior", "Producto siguiente", "Ver producto N") instead of relying on default English translations from libraries. Additionally, dynamic text changes (like updating product info) require `aria-live="polite"` on the container, and `role="tab"` with `aria-selected` is essential for custom pagination dot indicators to announce state correctly.
+**Action:** When working on custom carousels, always verify that `aria-live` is present on dynamic content containers, and map explicit ARIA translation strings for navigation controls and pagination indicators.
