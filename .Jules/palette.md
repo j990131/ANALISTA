@@ -1,0 +1,3 @@
+## 2024-06-11 - Carousel Accessibility Patterns
+**Learning:** Carousels in this repository require a triad of accessibility features to function correctly with screen readers: explicitly translated ARIA labels for navigation (e.g., "Producto anterior/siguiente"), `aria-live="polite"` on dynamically changing content containers, and tab semantics (`role="tablist/tab"`, `aria-selected`) on indicator dots. Consistency must be maintained across pure HTML and React representations.
+**Action:** When creating or modifying carousels, always apply this ARIA triad. Ensure labels use the application's target language (e.g., Spanish) and apply changes to all duplicate component implementations (React vs standalone HTML).
