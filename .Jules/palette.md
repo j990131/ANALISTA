@@ -1,0 +1,3 @@
+## 2024-05-19 - Dental Promo Accessibility Patterns
+**Learning:** The UI components, such as DentalPromo, are in Spanish and require explicitly translated ARIA labels (e.g., 'Producto anterior', 'Producto siguiente') and dynamically interpolated labels for mapped elements (e.g., 'Ver producto ${i + 1}') to ensure accessibility. Furthermore, dynamic UI elements in this project utilize `role='tab'` with `aria-selected` for pagination indicators and `aria-live='polite'` on dynamically updated text containers to ensure proper screen reader support.
+**Action:** Always verify that ARIA labels match the target language of the UI component and use standard ARIA roles and properties for dynamic element patterns (e.g. carousels and paginators).
