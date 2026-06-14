@@ -1,0 +1,3 @@
+## 2024-06-25 - [Accessible Carousel Indicators]
+**Learning:** Dynamic UI components like carousels in this app use generic buttons for indicators without explicit structural roles (`tablist`/`tab`), missing selection states (`aria-selected`), and lacking descriptive labels, hindering screen reader users. Dynamic text regions also lack `aria-live` to announce changes smoothly.
+**Action:** Always apply `role="tablist"` to dot containers, `role="tab"` with `aria-selected` and `aria-label` to individual indicators, and `aria-live="polite"` to dynamically changing text areas like product info containers.
