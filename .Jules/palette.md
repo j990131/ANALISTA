@@ -1,0 +1,3 @@
+## 2024-11-20 - Accessible Carousels in Spanish UI
+**Learning:** Carousels require `role="tablist"` and `role="tab"` with dynamic `aria-selected` tracking active indices to read accurately. ARIA labels on dynamic elements (like pagination dots) must also support internationalization or localized interpolation (e.g., `Ver producto ${i + 1}`) instead of relying on generic English text to fit the app's language context (Spanish).
+**Action:** When evaluating carousel and dynamic text updates, look for missing localization in ARIA strings and ensure containers with text that changes (like product descriptions) receive `aria-live="polite"` so screen readers hear updates naturally.
