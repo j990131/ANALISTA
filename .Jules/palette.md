@@ -1,0 +1,3 @@
+## 2026-06-21 - Custom Carousel Accessibility
+**Learning:** Custom carousels without standard semantic tags require precise ARIA attributes to be screen-reader friendly. Specifically, the dots navigation must use `role="tablist"` and `role="tab"` along with dynamic `aria-selected` tracking, while the text content container needing live updates as users navigate must have `aria-live="polite"`.
+**Action:** Always ensure that custom built interactive components with dynamically changing text have explicit role declarations and aria-live regions so that changes are correctly announced by screen readers without being disruptive.
