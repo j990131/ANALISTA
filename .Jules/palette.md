@@ -1,0 +1,3 @@
+## 2023-10-27 - Carousel Accessibility Learning
+**Learning:** For dynamic carousels in this design system, standard accessibility requires explicitly translated ARIA labels (e.g., 'Producto anterior', 'Producto siguiente') because the primary language is Spanish. Additionally, `aria-live='polite'` is crucial for dynamically updating text containers, and dot indicators must use `role='tablist'` and `role='tab'` to function correctly with screen readers.
+**Action:** Always ensure ARIA attributes are applied in both React components and equivalent standalone HTML files, using appropriate localized strings.
