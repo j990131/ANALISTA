@@ -93,6 +93,15 @@ export default function DentalPromoPage() {
               className={`product-card ${index === activeIndex ? "active" : ""}`}
               style={getCardStyle(index)}
               onClick={() => setActiveIndex(index)}
+              role="button"
+              tabIndex={0}
+              aria-label={`Ver producto ${product.name}`}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  setActiveIndex(index);
+                }
+              }}
             >
               <div
                 className="card-inner"
@@ -113,16 +122,16 @@ export default function DentalPromoPage() {
         </div>
 
         {/* Navigation arrows */}
-        <button className="nav-btn nav-prev" onClick={prev}>
+        <button className="nav-btn nav-prev" onClick={prev} aria-label="Producto anterior">
           ‹
         </button>
-        <button className="nav-btn nav-next" onClick={next}>
+        <button className="nav-btn nav-next" onClick={next} aria-label="Producto siguiente">
           ›
         </button>
       </div>
 
       {/* Active Product Info */}
-      <div className="product-info">
+      <div className="product-info" aria-live="polite">
         <h2
           className="product-name"
           style={{ color: active.accent }}
@@ -133,13 +142,16 @@ export default function DentalPromoPage() {
       </div>
 
       {/* Dot indicators */}
-      <div className="dots">
+      <div className="dots" role="tablist">
         {products.map((_, i) => (
           <button
             key={i}
             className={`dot ${i === activeIndex ? "dot-active" : ""}`}
             style={i === activeIndex ? { background: active.accent } : {}}
             onClick={() => setActiveIndex(i)}
+            role="tab"
+            aria-selected={i === activeIndex}
+            aria-label={`Ver producto ${i + 1}`}
           />
         ))}
       </div>

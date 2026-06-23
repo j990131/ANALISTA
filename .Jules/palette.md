@@ -1,0 +1,4 @@
+
+## 2023-10-27 - [DentalPromo] Accessibility across vanilla HTML and React JSX
+**Learning:** When making UX/A11y enhancements in projects containing dual implementations (vanilla HTML and React components, such as `dental-promo.html` vs `preview.html`/`DentalPromoPage.jsx`), it is critical to synchronize ARIA attributes (`aria-label`, `aria-selected`, `aria-live`, `role`) and interaction logic (keyboard accessibility via `tabIndex` and `onKeyDown`/`onkeydown`) across all representations. Dynamic elements like carousels often need manual JS state syncing for `aria-selected` in vanilla HTML, while React handles it declaratively.
+**Action:** Always check the root or `src/` directory for standalone HTML versions of React components to ensure accessibility parity and cohesive visual states (`:focus-visible`) across the entire repository.
