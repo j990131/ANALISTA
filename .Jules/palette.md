@@ -1,0 +1,3 @@
+## 2024-10-24 - Spanish ARIA Labels for Dynamic Carousels
+**Learning:** Carousels that dynamically render UI components in Spanish (like `DentalPromo`) require explicit and localized ARIA labels (`Producto anterior`, `Producto siguiente`, `Ver producto X`). Furthermore, matching the behavior across pure HTML/VanillaJS vs. React requires dynamically setting attributes like `role="tab"`, `aria-selected`, and `aria-live` regions using JavaScript `setAttribute` to achieve parity with React's declarative state mappings.
+**Action:** Always verify dual implementations (React vs HTML) for missing ARIA properties, ensure tab structures use `role="tablist"`/`role="tab"`, and add `aria-live="polite"` on dynamically changing product info sections.
