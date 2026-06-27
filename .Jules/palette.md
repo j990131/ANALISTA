@@ -1,0 +1,3 @@
+## 2025-01-24 - Accessibility Localization and Dual Implementation Parity
+**Learning:** Spanish UI requires explicitly translated ARIA labels (e.g., "Producto anterior") and dynamic interpolation for array elements (e.g., "Ver producto ${i+1}"). Additionally, when maintaining dual implementations (React vs Vanilla HTML), state-driven accessibility attributes like `aria-selected` must be manually managed via JavaScript DOM manipulation in the vanilla version to achieve parity with React's declarative state rendering.
+**Action:** Always verify translated strings for accessibility labels in localized components, and explicitly document state-sync logic for vanilla JS counterparts when porting accessible React components.
