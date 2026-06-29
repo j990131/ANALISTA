@@ -1,0 +1,3 @@
+## 2024-05-24 - Accessibility Parity in Dual Implementations
+**Learning:** When maintaining both React and vanilla JavaScript versions of a component, React's declarative state management seamlessly handles dynamic ARIA attributes (like `aria-selected` changing with state). However, achieving parity in the vanilla HTML/JS version requires manual synchronization within the render cycle (e.g., explicitly calling `setAttribute("aria-selected", true/false)`) to ensure screen readers receive the same state updates across both codebases.
+**Action:** Always verify that dynamic ARIA state changes in a React component have equivalent DOM manipulation logic implemented in any accompanying vanilla JavaScript rendering functions.
