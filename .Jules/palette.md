@@ -1,0 +1,3 @@
+## 2024-11-20 - [A11y] Screen Reader Support for Multi-Language Promo Carousels
+**Learning:** For internationalized UI components like the Spanish "DentalPromo" carousel, native HTML state management (`aria-selected`, `role="tab"`) paired with strictly translated labels (`"Producto anterior"`, `"Ver producto ${i+1}"`) significantly improves intuitive screen-reader navigation and structural parity between React (`.jsx`) and vanilla JS (`.html`) implementations.
+**Action:** Always provide translated `aria-label` attributes on icon-only navigation buttons and use the `role="tablist"`/`role="tab"` pattern along with active `aria-selected` tracking for all dynamic UI carousel pagination dot elements to ensure full accessibility.
