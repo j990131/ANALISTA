@@ -1,0 +1,3 @@
+## 2024-06-30 - [Adding ARIA to Dual Implementation Carousel]
+**Learning:** Found that this app heavily relies on dual implementations of components (React and Vanilla JS). When adding dynamic state tracking for accessibility, like `aria-selected` to a dynamically rotating vanilla JS UI, state must be synced across the lifecycle manually (`d.setAttribute("aria-selected", i === active)` inside a render function) unlike the declarative standard of React. This pattern might easily break if the `render()` implementation misses state attributes, which often get updated late or separately.
+**Action:** Always verify state hydration logic for vanilla component files and compare directly against the `preview.html` inline React structure when implementing a11y states.
