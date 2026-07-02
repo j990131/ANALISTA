@@ -1,0 +1,3 @@
+## 2024-05-24 - Accessibility upgrades for Dynamic Custom Carousel
+**Learning:** Pure HTML/JS carousel implementations and their React counterparts lack essential native accessibility roles and states. Custom icon-only buttons require ARIA labels, dynamic state indicators require `role="tab"`/`aria-selected`, and dynamically changing text areas must have `aria-live` so screen reader users are aware of state changes without focusing the text itself.
+**Action:** When implementing or reviewing custom carousels across pure JS and React, always verify that navigation buttons have descriptive ARIA labels, pagination dots use tablist/tab roles with `aria-selected` state tracking, and content areas use `aria-live="polite"` for dynamic updates.
