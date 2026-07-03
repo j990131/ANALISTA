@@ -1,0 +1,3 @@
+## 2024-05-24 - Spanish ARIA Labels for Dental Promo
+**Learning:** In Spanish UI components like the Dental Promo, ARIA labels must be explicitly translated (e.g., 'Producto anterior', 'Producto siguiente') and dynamic elements require interpolated labels (e.g., 'Ver producto ${i + 1}') along with standard roles like 'tab' and 'aria-selected' to ensure proper screen reader accessibility. Dynamic text containers should use 'aria-live="polite"'.
+**Action:** Always implement localized ARIA attributes and synchronize 'aria-selected' state manually in vanilla HTML components to achieve parity with React implementations.
