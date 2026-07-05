@@ -1,0 +1,3 @@
+## 2024-06-25 - Standardizing Dynamic Carousel Accessibility
+**Learning:** Carousels inside this app (and standalone HTML equivalents) lack inherent structural semantics for screen readers. Using just buttons for dots provides insufficient context.
+**Action:** When implementing or fixing custom carousels, always apply `role="tablist"` to the dot container, and `role="tab"`, `aria-selected`, and an explicit interpolated `aria-label` (e.g. `Ver producto ${i + 1}`) to the individual pagination buttons. Additionally, the dynamically updated information section must have `aria-live="polite"` so screen readers narrate content shifts upon sliding.
