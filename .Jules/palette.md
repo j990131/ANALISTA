@@ -1,0 +1,3 @@
+## 2024-07-07 - Accessibility for Custom UI Components
+**Learning:** Adding accessibility to a custom carousel UI built across multiple frontend paradigms (React component and plain HTML/JS) requires translating standard ARIA implementations, like `role="tab"` and dynamic `aria-selected`, carefully into both paradigms. Also, ensuring that translated strings like "Producto anterior" are used for ARIA labels in Spanish UIs.
+**Action:** When working with dual React/vanilla HTML implementations, always ensure accessibility features (ARIA attributes, roles, and live regions) are ported equivalently to both versions, using manual DOM manipulation for the vanilla JavaScript side if necessary.
