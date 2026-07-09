@@ -1,0 +1,3 @@
+## 2024-07-09 - DentalPromo Accessibility Update
+**Learning:** Dynamic UI elements like carousels in Spanish need explicitly translated ARIA labels (e.g., 'Producto anterior', 'Ver producto ${i + 1}') and `aria-live='polite'` on dynamically updated text containers to ensure proper screen reader accessibility. State attributes like `aria-selected` and `role='tab'` must be manually synced via JavaScript in vanilla HTML implementations to achieve parity with React's declarative behavior.
+**Action:** Always add `aria-live` to dynamic content regions, apply standard carousel navigation ARIA labels localized to the interface language, and ensure state synchronization for non-framework components.
