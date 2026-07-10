@@ -1,0 +1,3 @@
+## 2026-07-10 - Carousel Accessibility (Spanish Localization)
+**Learning:** The UI components in this app are localized in Spanish. Standard carousel interactive elements (navigation buttons and dot indicators) lacked ARIA labels for accessibility, requiring explicit Spanish translations (e.g., "Producto anterior", "Ver producto ${i + 1}") alongside dynamic state indicators (`aria-selected`) and `aria-live="polite"` for text containers to ensure they are screen reader friendly.
+**Action:** Always add properly localized ARIA labels, dynamic `aria-selected` attributes, and `aria-live="polite"` regions when building or updating interactive carousels and dynamic elements.
