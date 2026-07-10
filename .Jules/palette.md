@@ -1,0 +1,3 @@
+## 2026-07-10 - Adding Accessible Interactions to DentalPromo Carousel
+**Learning:** When developing highly interactive carousels dynamically displaying text, `aria-live='polite'` is crucial to announce active item info to screen readers, and localized navigation buttons require explicit translated ARIA labels (like 'Producto anterior') in non-English contexts.
+**Action:** Always provide explicit translated ARIA labels for icon-only navigation, and apply `aria-live` regions dynamically and natively manage `aria-selected` tabstate in vanilla JS implementations for full accessibility parity with React.
