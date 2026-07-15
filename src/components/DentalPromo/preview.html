@@ -387,12 +387,12 @@
                 </div>
               ))}
             </div>
-            <button className="nav-btn nav-prev" onClick={prev}>‹</button>
-            <button className="nav-btn nav-next" onClick={next}>›</button>
+            <button className="nav-btn nav-prev" onClick={prev} aria-label="Producto anterior">‹</button>
+            <button className="nav-btn nav-next" onClick={next} aria-label="Producto siguiente">›</button>
           </div>
 
           {/* Product Info */}
-          <div className="product-info">
+          <div className="product-info" aria-live="polite">
             <h2 className="product-name" style={{ color: active.accent }}>
               {active.name}
             </h2>
@@ -400,10 +400,13 @@
           </div>
 
           {/* Dots */}
-          <div className="dots">
+          <div className="dots" role="tablist" aria-label="Navegación de productos">
             {products.map((_, i) => (
               <button
                 key={i}
+                role="tab"
+                aria-selected={i === activeIndex}
+                aria-label={"Ver producto " + (i + 1)}
                 className={`dot ${i === activeIndex ? "dot-active" : ""}`}
                 style={i === activeIndex ? { background: active.accent } : {}}
                 onClick={() => setActiveIndex(i)}
