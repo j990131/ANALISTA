@@ -1,0 +1,3 @@
+## 2024-07-17 - Translated ARIA Labels in Dual Implementations
+**Learning:** The UI components in this app are in Spanish. ARIA labels (e.g., 'Producto anterior', 'Producto siguiente') and dynamic labels (e.g., 'Ver producto ${i + 1}') must be explicitly translated for accessibility. Furthermore, state attributes like `aria-selected` must be manually implemented and synced via JavaScript in vanilla HTML versions to achieve parity with React's declarative behavior.
+**Action:** Always verify language context before applying ARIA labels and ensure vanilla HTML preview files manually sync state attributes to maintain full parity with React components.
