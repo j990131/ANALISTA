@@ -1,0 +1,3 @@
+## 2024-06-01 - Dental Promo Accessibility
+**Learning:** Dynamic UI elements in this project require specific explicit ARIA attributes like role='tablist' on dot containers, role='tab' on individual dots with dynamically translated labels (e.g. 'Ver producto X'), and aria-live='polite' on changing text to meet accessibility standards. Vanilla HTML versions require these to be manually synced in JS to match React parity.
+**Action:** Always verify dual implementation patterns (React and vanilla HTML) maintain identical accessibility semantics via explicit attribute binding in JS for HTML implementations.
