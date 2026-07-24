@@ -1,0 +1,3 @@
+## 2024-07-24 - Accessibility for dynamic localized elements
+**Learning:** When adding ARIA labels to dynamically generated and localized UI elements (like a Spanish carousel), labels (e.g., 'Producto anterior', 'Ver producto ${i + 1}') must be explicitly translated and state attributes like `aria-selected` must be manually synced via JavaScript in vanilla HTML versions to achieve parity with React's declarative behavior.
+**Action:** Always ensure ARIA labels match the application's locale and explicitly synchronize dynamic accessibility states across both vanilla HTML and framework-specific implementations.
