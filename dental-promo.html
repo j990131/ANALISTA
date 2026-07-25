@@ -244,18 +244,18 @@
   <!-- Carousel -->
   <div class="stage">
     <div class="track" id="track"></div>
-    <button class="nav nav-l" onclick="move(-1)">‹</button>
-    <button class="nav nav-r" onclick="move(1)">›</button>
+    <button class="nav nav-l" aria-label="Producto anterior" onclick="move(-1)">‹</button>
+    <button class="nav nav-r" aria-label="Producto siguiente" onclick="move(1)">›</button>
   </div>
 
   <!-- Info -->
-  <div class="info">
+  <div class="info" aria-live="polite">
     <h2 class="product-name" id="pname"></h2>
     <p class="product-desc" id="pdesc"></p>
   </div>
 
   <!-- Dots -->
-  <div class="dots" id="dots"></div>
+  <div class="dots" id="dots" role="tablist"></div>
 
   <!-- Price -->
   <div class="price-row">
@@ -298,6 +298,8 @@
       const d = document.createElement("button");
       d.className = "dot";
       d.id = "dot-" + i;
+      d.setAttribute("role", "tab");
+      d.setAttribute("aria-label", `Ver producto ${i + 1}`);
       d.onclick = () => setActive(i);
       dotsEl.appendChild(d);
     });
@@ -345,6 +347,7 @@
       const d = document.getElementById("dot-" + i);
       d.classList.toggle("on", i === active);
       d.style.background = i === active ? p.accent : "";
+      d.setAttribute("aria-selected", i === active ? "true" : "false");
     });
   }
 
