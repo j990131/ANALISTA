@@ -387,8 +387,8 @@
                 </div>
               ))}
             </div>
-            <button className="nav-btn nav-prev" onClick={prev}>‹</button>
-            <button className="nav-btn nav-next" onClick={next}>›</button>
+            <button className="nav-btn nav-prev" onClick={prev} aria-label="Producto anterior">‹</button>
+            <button className="nav-btn nav-next" onClick={next} aria-label="Producto siguiente">›</button>
           </div>
 
           {/* Product Info */}
@@ -407,6 +407,7 @@
                 className={`dot ${i === activeIndex ? "dot-active" : ""}`}
                 style={i === activeIndex ? { background: active.accent } : {}}
                 onClick={() => setActiveIndex(i)}
+                aria-label={`Ver producto ${i + 1}`}
               />
             ))}
           </div>
