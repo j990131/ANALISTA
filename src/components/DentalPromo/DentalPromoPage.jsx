@@ -85,7 +85,7 @@ export default function DentalPromoPage() {
       </header>
 
       {/* Diagonal Carousel */}
-      <div className="carousel-stage">
+      <div className="carousel-stage" role="region" aria-roledescription="carousel" aria-label="Productos">
         <div className="carousel-track">
           {products.map((product, index) => (
             <div
@@ -93,6 +93,9 @@ export default function DentalPromoPage() {
               className={`product-card ${index === activeIndex ? "active" : ""}`}
               style={getCardStyle(index)}
               onClick={() => setActiveIndex(index)}
+              role="group"
+              aria-roledescription="slide"
+              aria-label={product.name}
             >
               <div
                 className="card-inner"
@@ -113,16 +116,16 @@ export default function DentalPromoPage() {
         </div>
 
         {/* Navigation arrows */}
-        <button className="nav-btn nav-prev" onClick={prev}>
+        <button className="nav-btn nav-prev" onClick={prev} aria-label="Producto anterior">
           ‹
         </button>
-        <button className="nav-btn nav-next" onClick={next}>
+        <button className="nav-btn nav-next" onClick={next} aria-label="Producto siguiente">
           ›
         </button>
       </div>
 
       {/* Active Product Info */}
-      <div className="product-info">
+      <div className="product-info" aria-live="polite">
         <h2
           className="product-name"
           style={{ color: active.accent }}
@@ -133,13 +136,16 @@ export default function DentalPromoPage() {
       </div>
 
       {/* Dot indicators */}
-      <div className="dots">
+      <div className="dots" role="tablist" aria-label="Navegación de productos">
         {products.map((_, i) => (
           <button
             key={i}
             className={`dot ${i === activeIndex ? "dot-active" : ""}`}
             style={i === activeIndex ? { background: active.accent } : {}}
             onClick={() => setActiveIndex(i)}
+            role="tab"
+            aria-selected={i === activeIndex}
+            aria-label={`Ver producto ${i + 1}`}
           />
         ))}
       </div>
