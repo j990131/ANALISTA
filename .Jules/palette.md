@@ -1,0 +1,3 @@
+## 2026-08-06 - Accessibility for custom carousels
+**Learning:** Custom carousel components in this project must use `role='region'` and `aria-roledescription='carousel'` on the stage container, and `role='group'` with `aria-roledescription='slide'` on individual product cards for optimal screen reader support.
+**Action:** Always verify dual implementations (vanilla HTML vs React components) to ensure interactive accessibility states like `aria-selected` and focus management are manually implemented and synced via JavaScript in vanilla HTML versions to achieve parity with React's declarative behavior.
