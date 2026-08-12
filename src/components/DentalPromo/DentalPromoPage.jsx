@@ -85,11 +85,14 @@ export default function DentalPromoPage() {
       </header>
 
       {/* Diagonal Carousel */}
-      <div className="carousel-stage">
+      <div className="carousel-stage" role="region" aria-roledescription="carousel" aria-label="Productos Dentales">
         <div className="carousel-track">
           {products.map((product, index) => (
             <div
               key={product.id}
+              role="group"
+              aria-roledescription="slide"
+              aria-label={product.name}
               className={`product-card ${index === activeIndex ? "active" : ""}`}
               style={getCardStyle(index)}
               onClick={() => setActiveIndex(index)}
@@ -113,16 +116,16 @@ export default function DentalPromoPage() {
         </div>
 
         {/* Navigation arrows */}
-        <button className="nav-btn nav-prev" onClick={prev}>
+        <button className="nav-btn nav-prev" onClick={prev} aria-label="Producto anterior">
           ‹
         </button>
-        <button className="nav-btn nav-next" onClick={next}>
+        <button className="nav-btn nav-next" onClick={next} aria-label="Producto siguiente">
           ›
         </button>
       </div>
 
       {/* Active Product Info */}
-      <div className="product-info">
+      <div className="product-info" aria-live="polite">
         <h2
           className="product-name"
           style={{ color: active.accent }}
@@ -133,10 +136,13 @@ export default function DentalPromoPage() {
       </div>
 
       {/* Dot indicators */}
-      <div className="dots">
+      <div className="dots" role="tablist" aria-label="Controles del carrusel">
         {products.map((_, i) => (
           <button
             key={i}
+            role="tab"
+            aria-selected={i === activeIndex}
+            aria-label={`Ver producto ${i + 1}`}
             className={`dot ${i === activeIndex ? "dot-active" : ""}`}
             style={i === activeIndex ? { background: active.accent } : {}}
             onClick={() => setActiveIndex(i)}
