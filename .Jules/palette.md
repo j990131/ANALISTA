@@ -1,0 +1,3 @@
+## 2024-08-16 - Carousel Navigation Accessibility
+**Learning:** Carousel navigation buttons and indicators typically lack proper ARIA labels, `role` and `aria-live` regions in promotional materials, making it difficult for screen readers to navigate products. Dynamic text content updates need `aria-live` to be announced.
+**Action:** Add `aria-label` to navigation buttons and dots. Implement `aria-live="polite"` on dynamically changing product info to inform screen readers of updates. Use `role="tablist"` on dot containers and `role="tab"` with `aria-selected` on individual dots. Use `role="region"` and `aria-roledescription="carousel"` for carousel containers.
