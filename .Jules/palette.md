@@ -1,0 +1,3 @@
+## 2024-05-24 - [Add Accessibility Attributes to Carousels]
+**Learning:** Carousels and sliders are notorious for being inaccessible if missing semantic roles and aria states. Both the native HTML version and React components require `role="region"`, `aria-roledescription="carousel"`, `role="tablist"` for dots, `role="group"` with `aria-roledescription="slide"` for items, and aria-labels for navigation buttons to support screen readers.
+**Action:** When working on dynamic slider/carousel components, explicitly define ARIA roles to support keyboard and screen reader navigation, ensuring state synchronization between visual logic and accessibility metadata (e.g., `aria-selected` for tabs).
