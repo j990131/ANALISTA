@@ -1,0 +1,3 @@
+## 2024-08-18 - Carousel Accessibility Pattern
+**Learning:** Dynamic carousels in this project lack native semantic structure. The stage container, cards, dots, and dynamic text blocks are rendered as generic elements, leaving screen readers unaware of the interactive carousel structure and status changes.
+**Action:** Always add `role="region"` and `aria-roledescription="carousel"` to the stage container, `role="group"` and `aria-roledescription="slide"` to cards, `role="tablist"` to dot containers, `role="tab"` with `aria-selected` to pagination indicators, and `aria-live="polite"` to dynamically updated text containers for custom carousels.
