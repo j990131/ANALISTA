@@ -1,0 +1,3 @@
+## 2024-08-21 - Carousel Accessibility in Dual Implementations
+**Learning:** Carousels that dynamically update product descriptions require `aria-live="polite"` on the text container to notify screen readers of changes without being disruptive. Additionally, when implementing state attributes like `aria-selected` for tab-like dots, vanilla JS implementations must manually sync these attributes via DOM APIs (e.g. `setAttribute`), whereas React handles them declaratively.
+**Action:** Next time, ensure that dynamically updated text elements in custom interactive components use `aria-live`, and always mirror declarative React ARIA states with explicit DOM attribute updates in corresponding vanilla JS versions.
