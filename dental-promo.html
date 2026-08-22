@@ -242,20 +242,20 @@
   </header>
 
   <!-- Carousel -->
-  <div class="stage">
+  <div class="stage" role="region" aria-roledescription="carousel" aria-label="Products">
     <div class="track" id="track"></div>
-    <button class="nav nav-l" onclick="move(-1)">‹</button>
-    <button class="nav nav-r" onclick="move(1)">›</button>
+    <button class="nav nav-l" onclick="move(-1)" aria-label="Previous product">‹</button>
+    <button class="nav nav-r" onclick="move(1)" aria-label="Next product">›</button>
   </div>
 
   <!-- Info -->
-  <div class="info">
+  <div class="info" aria-live="polite">
     <h2 class="product-name" id="pname"></h2>
     <p class="product-desc" id="pdesc"></p>
   </div>
 
   <!-- Dots -->
-  <div class="dots" id="dots"></div>
+  <div class="dots" id="dots" role="tablist" aria-label="Product slides"></div>
 
   <!-- Price -->
   <div class="price-row">
@@ -283,6 +283,9 @@
       const card = document.createElement("div");
       card.className = "card";
       card.id = "card-" + i;
+      card.setAttribute("role", "group");
+      card.setAttribute("aria-roledescription", "slide");
+      card.setAttribute("aria-label", p.name);
       card.innerHTML = `
         <div class="card-inner" style="background:${p.bg}">
           <div class="card-circle" style="background:${p.accent}22">${p.emoji}</div>
@@ -298,6 +301,8 @@
       const d = document.createElement("button");
       d.className = "dot";
       d.id = "dot-" + i;
+      d.setAttribute("role", "tab");
+      d.setAttribute("aria-label", "Go to slide " + (i + 1));
       d.onclick = () => setActive(i);
       dotsEl.appendChild(d);
     });
@@ -345,6 +350,7 @@
       const d = document.getElementById("dot-" + i);
       d.classList.toggle("on", i === active);
       d.style.background = i === active ? p.accent : "";
+      d.setAttribute("aria-selected", i === active ? "true" : "false");
     });
   }
 
