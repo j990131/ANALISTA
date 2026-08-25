@@ -1,0 +1,3 @@
+## 2024-08-25 - ARIA Labels for Icon-Only Carousel Controls
+**Learning:** When using custom icon-only controls (like previous/next buttons `‹` `›`) and non-text indicators (like dots) in a custom carousel, it's essential to provide screen readers with explicit `aria-label`s. Without them, screen readers may read out the obscure character symbol or remain silent, degrading accessibility.
+**Action:** Always add explicit `aria-label` attributes to custom icon-only navigation controls and pagination indicators (e.g., `aria-label="Previous product"`, `aria-label="Go to slide X"`) across both React component and vanilla HTML implementations.
