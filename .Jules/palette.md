@@ -1,0 +1,3 @@
+## 2024-05-24 - Accessibility Enhancements
+**Learning:** Found custom carousel components that lack proper screen reader accessibility out-of-the-box. Dynamic carousels require explicit ARIA attributes to function correctly for all users.
+**Action:** Always add `role='region'` and `aria-roledescription='carousel'` to stage containers, `role='group'` with `aria-roledescription='slide'` on individual product cards, `aria-live='polite'` to dynamic text sections (product info), `role='tablist'` and `role='tab'` for dot pagination, and `aria-label`s to navigation buttons. Also need to ensure keyboard interactions support standard Enter/Space for vanilla HTML implementations.
