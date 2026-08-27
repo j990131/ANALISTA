@@ -1,0 +1,3 @@
+## 2024-05-24 - Interactive Carousel Accessibility
+**Learning:** Custom interactive carousels require explicit ARIA roles (`role="region"`, `role="group"`, `role="tablist"`, `role="tab"`) and `aria-roledescription` to provide adequate context and navigational structures for screen readers. Dual implementations (vanilla HTML vs React components) also require that state attributes like `aria-selected` be manually updated in the DOM via JavaScript for vanilla implementations.
+**Action:** Always verify that dynamically instantiated custom components include explicit ARIA roles, ARIA descriptions, and synchronized state attributes across different implementation frameworks in the codebase.
