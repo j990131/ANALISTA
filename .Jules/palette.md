@@ -1,0 +1,3 @@
+## 2024-05-24 - Accessibility for Custom Carousels
+**Learning:** When a custom carousel component is built in vanilla JS alongside React, it's easy to overlook screen reader compatibility. A common pattern is applying `role="region"`, `aria-roledescription="carousel"`, and `aria-label` to the container, `role="group"` with `aria-roledescription="slide"` to cards, and utilizing `role="tablist"`/`role="tab"` with `aria-selected` for dot indicators.
+**Action:** Always ensure dual implementations (vanilla HTML vs React components) manually implement and sync state attributes like `aria-selected` and focus management in the vanilla JS version to achieve parity with React's declarative behavior.
