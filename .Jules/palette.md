@@ -1,0 +1,3 @@
+## 2024-08-30 - Carousel Accessibility Parity
+**Learning:** For interactive accessibility in dual implementations (vanilla HTML vs React), state attributes like `aria-selected` and focus management (e.g., `onkeydown` for Enter/Space) must be manually synced via JavaScript in vanilla HTML to match React's declarative behavior. Dynamic UI elements like carousels need `role='tablist'` for dots, `role='tab'` with `aria-selected` for indicators, and `aria-live='polite'` on dynamic text.
+**Action:** Always manually implement keyboard handlers (`tabindex`, `onkeydown` for Enter/Space) and explicit DOM `setAttribute` updates for ARIA state in vanilla HTML dynamic components to ensure parity with React.
