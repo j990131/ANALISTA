@@ -113,10 +113,10 @@ export default function DentalPromoPage() {
         </div>
 
         {/* Navigation arrows */}
-        <button className="nav-btn nav-prev" onClick={prev}>
+        <button className="nav-btn nav-prev" aria-label="Previous product" onClick={prev}>
           ‹
         </button>
-        <button className="nav-btn nav-next" onClick={next}>
+        <button className="nav-btn nav-next" aria-label="Next product" onClick={next}>
           ›
         </button>
       </div>
@@ -138,6 +138,7 @@ export default function DentalPromoPage() {
           <button
             key={i}
             className={`dot ${i === activeIndex ? "dot-active" : ""}`}
+            aria-label={`Slide ${i + 1}`}
             style={i === activeIndex ? { background: active.accent } : {}}
             onClick={() => setActiveIndex(i)}
           />
