@@ -1,0 +1,3 @@
+## 2024-09-03 - Carousel Accessibility Upgrade
+**Learning:** Custom carousel implementations built with pure JavaScript DOM manipulation often lack critical screen reader context. Standard custom carousel components in this project need manual application of `role='region'` and `aria-roledescription='carousel'` on the stage container, along with explicit labels for navigation controls (dots and arrows) and individual items (`role='group'`, `aria-roledescription='slide'`) to ensure screen reader users can navigate them properly.
+**Action:** Next time I encounter a custom UI component like a carousel built manually in JS, I will proactively ensure that the W3C standard ARIA attributes are applied both in the static HTML and dynamically during DOM node creation.
