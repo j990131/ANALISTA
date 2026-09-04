@@ -244,8 +244,8 @@
   <!-- Carousel -->
   <div class="stage">
     <div class="track" id="track"></div>
-    <button class="nav nav-l" onclick="move(-1)">‹</button>
-    <button class="nav nav-r" onclick="move(1)">›</button>
+    <button class="nav nav-l" onclick="move(-1)" aria-label="Previous product">‹</button>
+    <button class="nav nav-r" onclick="move(1)" aria-label="Next product">›</button>
   </div>
 
   <!-- Info -->
@@ -299,6 +299,7 @@
       d.className = "dot";
       d.id = "dot-" + i;
       d.onclick = () => setActive(i);
+      d.setAttribute('aria-label', 'Slide ' + (i + 1));
       dotsEl.appendChild(d);
     });
   }
