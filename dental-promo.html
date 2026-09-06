@@ -242,10 +242,10 @@
   </header>
 
   <!-- Carousel -->
-  <div class="stage">
+  <div class="stage" role="region" aria-roledescription="carousel" aria-label="Product carousel">
     <div class="track" id="track"></div>
-    <button class="nav nav-l" onclick="move(-1)">‹</button>
-    <button class="nav nav-r" onclick="move(1)">›</button>
+    <button class="nav nav-l" onclick="move(-1)" aria-label="Previous product">‹</button>
+    <button class="nav nav-r" onclick="move(1)" aria-label="Next product">›</button>
   </div>
 
   <!-- Info -->
@@ -283,6 +283,9 @@
       const card = document.createElement("div");
       card.className = "card";
       card.id = "card-" + i;
+      card.setAttribute("role", "group");
+      card.setAttribute("aria-roledescription", "slide");
+      card.setAttribute("aria-label", "Product " + (i + 1));
       card.innerHTML = `
         <div class="card-inner" style="background:${p.bg}">
           <div class="card-circle" style="background:${p.accent}22">${p.emoji}</div>
