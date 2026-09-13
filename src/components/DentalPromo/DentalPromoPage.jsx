@@ -85,11 +85,14 @@ export default function DentalPromoPage() {
       </header>
 
       {/* Diagonal Carousel */}
-      <div className="carousel-stage">
+      <div className="carousel-stage" role="region" aria-roledescription="carousel">
         <div className="carousel-track">
           {products.map((product, index) => (
             <div
               key={product.id}
+              role="group"
+              aria-roledescription="slide"
+              aria-label={'Product ' + (index + 1)}
               className={`product-card ${index === activeIndex ? "active" : ""}`}
               style={getCardStyle(index)}
               onClick={() => setActiveIndex(index)}
@@ -113,10 +116,10 @@ export default function DentalPromoPage() {
         </div>
 
         {/* Navigation arrows */}
-        <button className="nav-btn nav-prev" onClick={prev}>
+        <button className="nav-btn nav-prev" onClick={prev} aria-label="Previous product">
           ‹
         </button>
-        <button className="nav-btn nav-next" onClick={next}>
+        <button className="nav-btn nav-next" onClick={next} aria-label="Next product">
           ›
         </button>
       </div>
@@ -137,6 +140,7 @@ export default function DentalPromoPage() {
         {products.map((_, i) => (
           <button
             key={i}
+            aria-label={'Product ' + (i + 1)}
             className={`dot ${i === activeIndex ? "dot-active" : ""}`}
             style={i === activeIndex ? { background: active.accent } : {}}
             onClick={() => setActiveIndex(i)}
