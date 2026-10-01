@@ -1,0 +1,3 @@
+## 2024-05-23 - Custom Javascript Carousel ARIA Setup
+**Learning:** For custom-built Javascript carousels (where DOM elements are created dynamically), `aria-roledescription="carousel"` on a `role="region"` container, and `aria-roledescription="slide"` on `role="group"` elements provide ideal screen reader semantics. Navigation arrows and pagination dots must also explicitly have `aria-label` set dynamically.
+**Action:** Always ensure ARIA attributes are set via `.setAttribute()` in the Javascript component build functions if the HTML is generated dynamically, rather than only focusing on static HTML.
