@@ -1,0 +1,3 @@
+## 2024-05-14 - Carousel Accessibility Pattern
+**Learning:** Custom vanilla JS carousels require explicit ARIA role mapping (`role="region"` for stage, `role="group"` for slides) and explicit string-based `aria-label` assignment (e.g., using `product.name`) on dynamically generated elements to ensure proper screen reader navigation. Relying on default button behavior without descriptive text leaves icon-only nav buttons completely inaccessible.
+**Action:** Always verify that dynamically created interactive DOM elements (like dot navigation or product cards) have their `aria-label` and `role` attributes explicitly assigned during the `document.createElement` rendering loop.
