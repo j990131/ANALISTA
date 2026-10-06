@@ -1,0 +1,3 @@
+## 2024-05-24 - Custom Carousel Accessibility
+**Learning:** When building custom carousel components with raw DOM manipulation, roles and labels must be applied programmatically if the elements are created dynamically. Using `role="region"` and `aria-roledescription="carousel"` on the container, and `role="group"` with `aria-roledescription="slide"` on the dynamically generated product cards significantly improves screen reader support for non-standard UI components.
+**Action:** Always verify if custom interactive components are accessible and dynamically inject appropriate ARIA roles and labels during JavaScript component initialization.
