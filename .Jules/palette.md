@@ -1,0 +1,3 @@
+## 2024-05-18 - Added ARIA attributes to generic custom carousel
+**Learning:** Custom carousels built with generic DOM elements often lack necessary semantic roles and ARIA attributes for screen reader accessibility, particularly for dynamic elements like slide cards and pagination dots. Providing explicit ARIA roles (e.g., `region`, `carousel`, `group`, `slide`) and localized ARIA labels ensures these components are usable by all users.
+**Action:** When implementing or modifying custom carousels, always ensure that the outer container has a `region` role and `aria-roledescription="carousel"`, that individual slides have a `group` role and `aria-roledescription="slide"`, and that all interactive navigation controls (buttons, dots) have clear, descriptive ARIA labels.
