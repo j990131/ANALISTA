@@ -1,0 +1,3 @@
+## 2024-10-11 - Carousel Accessibility Implementation
+**Learning:** Implemented a standard accessibility pattern for custom carousels in `dental-promo.html`. Discovered that dynamically generated UI elements (like the product cards and navigation dots) require assigning ARIA roles and labels via JavaScript (`setAttribute`) rather than static HTML attributes.
+**Action:** Next time working on custom, dynamically rendered UI components like carousels or lists, proactively look for opportunities to add `role="region"`, `aria-roledescription`, and specific `aria-label` attributes to the generated elements directly within the JS build function to ensure full screen reader compatibility from initial render.
