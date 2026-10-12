@@ -1,0 +1,3 @@
+## 2026-03-13 - Dental Promo Carousel Accessibility
+**Learning:** Custom carousel components in this project require specific ARIA roles to be accessible. Specifically, the container needs `role="region"` and `aria-roledescription="carousel"`, while the individual product cards need `role="group"` and `aria-roledescription="slide"`. It's also important to add `aria-label`s to the navigation buttons and pagination dots so screen reader users can navigate the products.
+**Action:** When creating or modifying custom carousels in the future, always ensure these ARIA roles and labels are present to make the component fully accessible.
