@@ -1,0 +1,3 @@
+## 2024-10-13 - Vanilla JS DOM Carousel Accessibility
+**Learning:** When adding accessibility support to a custom web component carousel built entirely with raw DOM manipulation (e.g. `document.createElement`) without a framework, it's essential to set the `aria-label`, `role`, and `aria-roledescription` iteratively via `setAttribute` within the same loop that builds the component structure.
+**Action:** Next time I encounter a vanilla JS custom widget, I will immediately check if the generated markup has basic ARIA attributes applied dynamically, especially list/group semantic structures which are easily missed in raw DOM loops.
