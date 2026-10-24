@@ -1,0 +1,3 @@
+## 2024-10-24 - Accessibility improvements for custom web components
+**Learning:** Custom vanilla JS components (like the carousel cards built with `document.createElement`) often lack implicit semantic roles that native HTML elements provide. Setting `aria-label`, `role`, and `aria-roledescription` iteratively via `setAttribute` within the component builder loop is critical for screen reader compatibility.
+**Action:** When building custom web components via raw DOM manipulation, proactively assign explicit ARIA attributes and roles directly in the loop that creates them, ensuring dynamic elements have full accessibility context out-of-the-box.
