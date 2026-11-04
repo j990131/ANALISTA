@@ -1,0 +1,3 @@
+## 2024-05-19 - Accessible Interactive Elements Without Native Semantics
+**Learning:** When building custom interactive components with `div` or generic elements (like the swipeable cards or navigation dots in `dental-promo.html`), accessibility relies heavily on assigning appropriate ARIA roles (e.g., `role="button"` or `role="group"`), states (e.g., `aria-pressed`, `aria-current`), and labels (`aria-label`) dynamically. Screen readers need these cues to convey interactivity to users.
+**Action:** Always add semantic roles and descriptive `aria-label` attributes to custom clickable elements, and use dynamic updates for properties like `aria-current` or `aria-selected` to reflect their active states.
